@@ -36,7 +36,7 @@ A single-page application portfolio website built with HTML5, CSS, and JavaScrip
 
 ```
 SPA_Project/
-├── portfolio.html      # Main HTML file containing all styles and scripts
+├── index.html      # Main HTML file containing all styles and scripts
 ├── asset/             # Asset directory
 │   ├── profile_image.png
 │   ├── study_note_example.jpg
