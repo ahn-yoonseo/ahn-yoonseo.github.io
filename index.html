@@ -111,6 +111,18 @@
         }
 
         /* Portfolio Section */
+        #portfolio {
+            padding-top: 2rem;
+        }
+
+        #portfolio h1 {
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
         .portfolio-items {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -200,6 +212,8 @@
             font-weight: 700;
             font-size: 2rem;
             letter-spacing: -0.5px;
+            word-break: break-word;
+            overflow-wrap: break-word;
         }
 
         .contact-info {
@@ -211,20 +225,35 @@
             margin-bottom: 1rem;
             font-weight: 600;
             font-size: 1.3rem;
+            word-break: break-word;
+            overflow-wrap: break-word;
         }
 
         .contact-info p {
             color: #4a4a4a;
             font-size: 1.1rem;
             line-height: 1.8;
+            word-break: break-all;
+            overflow-wrap: break-word;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .navigation {
+                padding: 0.5rem;
+            }
+
             .navigation ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
+                gap: 0.5rem;
+            }
+
+            .navigation a {
+                font-size: 0.9rem;
+                padding: 0.4rem 0.6rem;
+            }
+
+            #content {
+                margin-top: 60px; /* Reduced margin since navigation is now horizontal */
             }
 
             .profile-container {
@@ -238,6 +267,7 @@
             .portfolio-items {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
+                padding-top: 1rem; /* Added padding to portfolio items */
             }
 
             .portfolio-item {
@@ -287,7 +317,6 @@
 
         <!-- Portfolio Section -->
         <section id="portfolio" class="page">
-            <h1>Portfolio</h1>
             <div class="portfolio-items">
                 <div class="portfolio-item study-notes">
                     <h2>Study Notes</h2>
@@ -325,6 +354,26 @@
 
     <script>
         $(document).ready(function() {
+            let lastScrollTop = 0;
+            const navigation = $('.navigation');
+            const scrollThreshold = 50;
+
+            // Handle scroll events
+            $(window).scroll(function() {
+                const currentScroll = $(this).scrollTop();
+                
+                // Show/hide navigation based on scroll direction
+                if (currentScroll > lastScrollTop && currentScroll > scrollThreshold) {
+                    // Scrolling down
+                    navigation.addClass('hide');
+                } else {
+                    // Scrolling up
+                    navigation.removeClass('hide');
+                }
+                
+                lastScrollTop = currentScroll;
+            });
+
             // Handle navigation clicks
             $('.navigation a').click(function(e) {
                 e.preventDefault();
