@@ -393,6 +393,11 @@
                 
                 // Update URL hash
                 window.location.hash = targetId;
+
+                // Scroll to top when navigating to home
+                if (targetId === 'home') {
+                    window.scrollTo(0, 0);
+                }
             });
 
             // Handle initial page load
